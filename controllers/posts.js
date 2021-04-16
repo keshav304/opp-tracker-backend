@@ -62,15 +62,17 @@ export const likePost = async (req,res)=>{
     if(unlike) {
         const post = await Posts.findById(id);
 
-        const updatedPost = await Posts.findByIdAndUpdate(id,{likeCount: post.likeCount-1},{new:true});
+        const updatedPost = await Posts.findByIdAndUpdate(id,{likeCount: post.likeCount - 1},{new:true});
+        
+        res.json(updatedPost);
+    }else {
+        const post = await Posts.findById(id);
+
+        const updatedPost = await Posts.findByIdAndUpdate(id,{likeCount: post.likeCount+1},{new:true});
         
         res.json(updatedPost);
     }
-    const post = await Posts.findById(id);
 
-    const updatedPost = await Posts.findByIdAndUpdate(id,{likeCount: post.likeCount+1},{new:true});
-    
-    res.json(updatedPost);
 };
 
 
