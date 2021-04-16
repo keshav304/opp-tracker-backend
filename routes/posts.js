@@ -1,6 +1,6 @@
 import express from 'express';
 import {getPosts,createPost,updatePost,deletePost,likePost} from '../controllers/posts.js';
-import { adminMiddleware, requireSignin } from "../controllers/auth.js";
+import { requireSignin } from "../controllers/auth.js";
 const postRoutes = express.Router();
 
 // postRoutes.get('/post/',getPosts);
@@ -10,8 +10,8 @@ const postRoutes = express.Router();
 // postRoutes.patch('/post/:id/likepost',requireSignin,adminMiddleware,likePost);
 postRoutes.get('/post/',getPosts);
 postRoutes.post('/post/',createPost);
-postRoutes.patch('/post/:id',requireSignin,updatePost);
+postRoutes.put('/post/:id',requireSignin,updatePost);
 postRoutes.delete('/post/:id',requireSignin,deletePost);
-postRoutes.patch('/post/:id/likepost',requireSignin,likePost);
+postRoutes.put('/post/likepost/:id',requireSignin,likePost);
 
 export default postRoutes;
