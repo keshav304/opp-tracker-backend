@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 
 
 
-app.use(cors({origin:`${process.env.CLIENT_URL}`}));
+app.use(cors({origin:"*"}));
 
 
 //middleware
