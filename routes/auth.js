@@ -1,5 +1,5 @@
 import express from "express";
-import {signup, accountActivation,signin,forgotPassword,resetPassword, googleLogin} from '../controllers/auth.js';
+import {signup, accountActivation,signin,forgotPassword,resetPassword, googleLogin,sawoLogin} from '../controllers/auth.js';
 
 //import validators
 import {userSignupValidator,userSigninValidator, forgotPasswordValidator, resetPasswordValidator} from '../validators/auth.js'
@@ -21,6 +21,9 @@ authRoutes.put('/reset-password',resetPasswordValidator, runValidation, resetPas
 
 // google auth
 authRoutes.post('/google-login',googleLogin)
+
+// sawo login
+authRoutes.post('/sawo/signin/',sawoLogin)
 
 
 export default authRoutes;
