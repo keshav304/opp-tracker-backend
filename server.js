@@ -20,7 +20,10 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 
 
-app.options('*', cors())
+
+app.use(cors({origin:`${process.env.CLIENT_URL}`}));
+
+
 //middleware
 app.use('/api', authRoutes); 
 app.use('/api',userRoutes);
