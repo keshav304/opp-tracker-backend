@@ -20,9 +20,8 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 
 
-if(process.env.NODE_ENV='development'){
-    app.use(cors({origin:`${process.env.CLIENT_URL}`}));
-}
+
+app.use(cors({origin:`${process.env.CLIENT_URL}`}));
 
 
 //middleware
