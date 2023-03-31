@@ -8,6 +8,7 @@ const postSchema = mongoose.Schema({
   detailsLink: String,
   registrationLink: String,
   category: String,
+  date: Date,
   createdAt: {
     type: Date,
     default: new Date(),

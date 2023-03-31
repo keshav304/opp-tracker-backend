@@ -1,3 +1,4 @@
+import json  from "body-parser";
 import mongoose from "mongoose";
 import Posts from "../models/posts.js";
 import savedPosts from "../models/savedposts.js";
@@ -17,12 +18,12 @@ export const getPosts = async (req, res) => {
 export const createPost = async (req, res) => {
   const post = req.body;
 
-  const newOpportunity = new Posts(post);
+  const newEvent = new Posts(post);
 
   try {
-    await newOpportunity.save();
+    await newEvent.save();
 
-    res.status(201).json(newOpportunity);
+    res.status(201).json(newEvent);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -146,9 +147,8 @@ export const getBookmarks = async (req, res) => {
 
 export const getUserPosts = async (req,res)=> {
 
-  const {userID} = req.params;
-
-  await Posts.find({"userId":userID}, (err,data)=> {
+  const {userId} = req.params;
+  await Posts.find({"userId":userId}, (err,data)=> {
     if(data){
       res.status(200).json(data)
     }else {

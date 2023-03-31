@@ -7,7 +7,7 @@ import  dotenv from 'dotenv';
 import authRoutes from './routes/auth.js' ;
 import userRoutes from './routes/user.js';
 import postRoutes from './routes/posts.js';
-import helmet from 'helmet';
+
 const app = express();
 dotenv.config();
 
@@ -15,13 +15,10 @@ dotenv.config();
 // app middleware
 //morgan used for logging
 app.use(morgan('dev'));
-app.use(helmet())
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 
-
-
-app.use(cors({origin:"https://opptracker.netlify.app"}));
+app.use(cors({origin:"http://localhost:3000/"}));
 
 
 //middleware
@@ -29,11 +26,9 @@ app.use('/api', authRoutes);
 app.use('/api',userRoutes);
 app.use('/api',postRoutes)
 
-
+// connecting to database
 const CONNECTION_URL = process.env.CONNECTION_URL
 const PORT = process.env.PORT|| 8000;
-
-
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on PORT: http://localhost:${PORT}`)))
