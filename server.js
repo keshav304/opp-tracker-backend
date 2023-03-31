@@ -12,7 +12,7 @@ const app = express();
 dotenv.config();
 
 
-app.use(cors({origin:"https://sathayabama-event-tracker.netlify.app/"}));
+app.use(cors({origin:"https://sathayabama-event-tracker.netlify.app"}));
 // app middleware
 //morgan used for logging
 app.use(morgan('dev'));
