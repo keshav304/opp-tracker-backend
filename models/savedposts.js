@@ -7,11 +7,14 @@ const savedPostSchema = mongoose.Schema({
   bookmarkedposts: [
     {
       id: String,
-      name: String,
+      eventname: String,
+      eventorganiser: String,
       description: String,
       detailsLink: String,
       registrationLink: String,
       category: String,
+      eventtime: "",
+      place:String,
       createdAt: {
         type: Date,
         default: new Date(),

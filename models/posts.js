@@ -3,12 +3,14 @@ import mongoose from "mongoose";
 // database schema
 const postSchema = mongoose.Schema({
   userId: String,
-  name: String,
+  eventname: String,
+  eventorganiser: String,
   description: String,
   detailsLink: String,
   registrationLink: String,
   category: String,
-  date: Date,
+  eventtime: "",
+  place:String,
   createdAt: {
     type: Date,
     default: new Date(),
